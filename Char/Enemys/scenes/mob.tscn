@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://otiwdnw8nm1n"]
+
+[ext_resource type="Script" path="res://Mob.gd" id="1_dmpsn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5v1ar"]
+height = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6jg5"]
+radius = 103.31
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6js8"]
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_73gbr"]
+radius = 12.0
+height = 26.0
+
+[node name="Mob" type="CharacterBody2D"]
+script = ExtResource("1_dmpsn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+animation = &""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5v1ar")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_i6jg5")
+
+[node name="PlayerHurtBox" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
+shape = SubResource("CapsuleShape2D_e6js8")
+
+[node name="WeaknessBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaknessBox"]
+shape = SubResource("CapsuleShape2D_73gbr")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="WeaknessBox" to="." method="_on_weakness_box_body_entered"]

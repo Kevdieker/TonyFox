@@ -1,0 +1,223 @@
+[gd_scene load_steps=22 format=3 uid="uid://dq3hg5uyvmqve"]
+
+[ext_resource type="Texture2D" uid="uid://bnywogq6jypmb" path="res://Char/Enemys/Sprites/enemy-deadth.png" id="1_1yv1s"]
+[ext_resource type="Texture2D" uid="uid://cwm0514ri3hb1" path="res://Char/Enemys/Sprites/frog/frog-idle.png" id="2_8dssl"]
+[ext_resource type="Texture2D" uid="uid://btw1mo2t65qn5" path="res://Char/Enemys/Sprites/frog/frog-jump.png" id="3_7w1g4"]
+
+[sub_resource type="GDScript" id="GDScript_5n3rv"]
+script/source = "extends CharacterBody2D
+
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+@onready var player = $\"../TonyFox\"
+@onready var anim = $AnimatedSprite2D
+@onready var deathAud = $DeathSound
+
+var playerdistance
+var playername = \"TonyFox\"
+var chase = false
+var SPEED = 80
+const JUMP_VELOCITY = -280.0
+
+func jump():
+		playerdistance = (player.position - self.position).normalized()
+		velocity.y = JUMP_VELOCITY
+		anim.play(\"Jump\")
+
+
+func _ready():
+	anim.play(\"Idle\")
+	
+func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y += gravity * delta * 0.5
+		
+	if chase == true:
+		if is_on_floor():
+			jump()
+	
+		if playerdistance.x > 0:
+			anim.flip_h = true
+		else:
+			anim.flip_h = false
+		velocity.x = playerdistance.x * SPEED
+	else:
+		if anim.animation != \"Death\":
+			anim.play(\"Idle\")
+		velocity.x = 0
+		
+	if velocity.y > 0:
+			anim.play(\"Fall\")
+	move_and_slide()
+			
+func _on_player_detection_body_entered(body):
+	if body.name == playername:
+		chase = true
+		
+func _on_player_detection_body_exited(body):
+	if body.name == playername:
+		chase = false
+
+func _on_weakness_box_body_entered(body):
+	if body.name == playername:
+		player.jump()
+		death()
+		
+func death():
+	deathAud.play()
+	chase = false
+	anim.play(\"Death\")
+	await anim.animation_finished
+	self.queue_free()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8srh"]
+atlas = ExtResource("1_1yv1s")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpbwh"]
+atlas = ExtResource("1_1yv1s")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2o8pv"]
+atlas = ExtResource("1_1yv1s")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m5oc"]
+atlas = ExtResource("1_1yv1s")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v753c"]
+atlas = ExtResource("1_1yv1s")
+region = Rect2(160, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo0dg"]
+atlas = ExtResource("1_1yv1s")
+region = Rect2(200, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ok7m4"]
+atlas = ExtResource("3_7w1g4")
+region = Rect2(70, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3ynk"]
+atlas = ExtResource("2_8dssl")
+region = Rect2(0, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0lj6"]
+atlas = ExtResource("2_8dssl")
+region = Rect2(35, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5tmy"]
+atlas = ExtResource("2_8dssl")
+region = Rect2(70, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_di2l2"]
+atlas = ExtResource("2_8dssl")
+region = Rect2(105, 0, 35, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svul3"]
+atlas = ExtResource("3_7w1g4")
+region = Rect2(35, 0, 35, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_senck"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8srh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpbwh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2o8pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m5oc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v753c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wo0dg")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ok7m4")
+}],
+"loop": true,
+"name": &"Fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_g3ynk")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_v0lj6")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_c5tmy")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_di2l2")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svul3")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5v1ar"]
+height = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6jg5"]
+radius = 244.002
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6js8"]
+height = 22.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_73gbr"]
+radius = 6.0
+height = 26.0
+
+[node name="Frog" type="CharacterBody2D"]
+script = SubResource("GDScript_5n3rv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_senck")
+animation = &"Jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_5v1ar")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+shape = SubResource("CircleShape2D_i6jg5")
+
+[node name="PlayerHurtBox" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
+shape = SubResource("CapsuleShape2D_e6js8")
+
+[node name="WeaknessBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaknessBox"]
+position = Vector2(0, -4)
+shape = SubResource("CapsuleShape2D_73gbr")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="WeaknessBox" to="." method="_on_weakness_box_body_entered"]

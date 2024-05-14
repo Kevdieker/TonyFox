@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://beeivj11cdy4a"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_bhc8q"]
+[ext_resource type="PackedScene" uid="uid://bi0qu7b083d0v" path="res://Menus/MainMenu/background/MainMenu_BG.tscn" id="2_ef2c6"]
+[ext_resource type="PackedScene" uid="uid://daveoo7qdaa23" path="res://Menus/SettingsMenu/settings_window.tscn" id="6_oq7wb"]
+[ext_resource type="AudioStream" uid="uid://vtwkpm3jwkm0" path="res://Music/MAINMENUE_undertale-ost-031-waterfall.mp3" id="7_8fkvn"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bhc8q")
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 220
+theme_override_constants/margin_right = 250
+theme_override_constants/margin_bottom = 260
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 53
+text = "TONY FOX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="PlayButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PLAY"
+icon_alignment = 1
+
+[node name="ExitButton" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "EXIT"
+
+[node name="Optionsbtn" type="Button" parent="MarginContainer2/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("2_ef2c6")]
+
+[node name="SettingsWindow" parent="." instance=ExtResource("6_oq7wb")]
+visible = false
+
+[node name="BackroundMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_8fkvn")
+volume_db = 0.405
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/VBoxContainer/HBoxContainer/Optionsbtn" to="SettingsWindow" method="_on_optionsbtn_pressed"]

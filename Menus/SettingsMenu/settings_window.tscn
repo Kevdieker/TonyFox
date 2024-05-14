@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://daveoo7qdaa23"]
+
+[ext_resource type="Script" path="res://Menus/SettingsMenu/settings_window.gd" id="1_s7hit"]
+[ext_resource type="Script" path="res://Menus/SettingsMenu/MusicSlider.gd" id="2_c8f10"]
+[ext_resource type="Script" path="res://Menus/SettingsMenu/MasterSlider.gd" id="2_efcjb"]
+[ext_resource type="Script" path="res://Menus/SettingsMenu/SFXSlider.gd" id="4_n7mla"]
+
+[node name="SettingsWindow" type="Window"]
+process_mode = 3
+initial_position = 1
+size = Vector2i(550, 420)
+script = ExtResource("1_s7hit")
+
+[node name="Settings" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Settings/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="WindowMode" type="Label" parent="Settings/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Window Mode"
+
+[node name="OptionButton" type="OptionButton" parent="Settings/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(112.82, 0)
+layout_mode = 2
+
+[node name="MasterSliderLbl" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Master
+
+"
+
+[node name="MasterSlider" type="HSlider" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_efcjb")
+
+[node name="MusikSliderLbl" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music
+"
+
+[node name="MusikSlider" type="HSlider" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("2_c8f10")
+
+[node name="SFXSliderLbl" type="Label" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SFX
+"
+
+[node name="SFXSlider" type="HSlider" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("4_n7mla")
+
+[node name="ConfirmBtn" type="Button" parent="Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Confirm"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="pressed" from="Settings/MarginContainer/VBoxContainer/ConfirmBtn" to="." method="_on_confirm_btn_pressed"]
