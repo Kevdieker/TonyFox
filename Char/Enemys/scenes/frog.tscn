@@ -8,7 +8,7 @@
 script/source = "extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-@onready var player = $\"../TonyFox\"
+@onready var player = $\"../../TonyFox\"
 @onready var anim = $AnimatedSprite2D
 @onready var deathAud = $DeathSound
 
@@ -62,12 +62,14 @@ func _on_weakness_box_body_entered(body):
 		player.jump()
 		death()
 		
+		
 func death():
 	deathAud.play()
 	chase = false
 	anim.play(\"Death\")
 	await anim.animation_finished
 	self.queue_free()
+	
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j8srh"]
@@ -198,19 +200,23 @@ sprite_frames = SubResource("SpriteFrames_senck")
 animation = &"Jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_5v1ar")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_i6jg5")
 
 [node name="PlayerHurtBox" type="Area2D" parent="." groups=["Enemy"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
 shape = SubResource("CapsuleShape2D_e6js8")
 
 [node name="WeaknessBox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WeaknessBox"]
 position = Vector2(0, -4)

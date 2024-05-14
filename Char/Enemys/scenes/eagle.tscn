@@ -1,0 +1,193 @@
+[gd_scene load_steps=19 format=3 uid="uid://b3pj4wvi5ovjo"]
+
+[ext_resource type="Texture2D" uid="uid://bnywogq6jypmb" path="res://Char/Enemys/Sprites/enemy-deadth.png" id="2_5gu2o"]
+[ext_resource type="Texture2D" uid="uid://b74xx5nc60tf3" path="res://Char/Enemys/Sprites/eagle/eagle-attack.png" id="3_3taki"]
+
+[sub_resource type="GDScript" id="GDScript_n6dsg"]
+script/source = "extends CharacterBody2D
+
+@onready var player = $\"../../TonyFox\"
+@onready var anim = $AnimatedSprite2D
+@onready var deathAud = $DeathSound
+
+var chase = false
+var SPEED = 50
+var playerdistance
+var playername = \"TonyFox\"
+
+func _ready():
+	anim.play(\"Fly\")
+	
+	
+func _physics_process(delta):
+	if chase == true:
+		playerdistance = (player.position - self.position).normalized()
+		if playerdistance.x > 0:
+			anim.flip_h = true
+		else:
+			anim.flip_h = false
+		velocity.x = playerdistance.x * SPEED
+		velocity.y = playerdistance.y * SPEED
+	else:
+		velocity.x = 0
+	move_and_slide()
+			
+func _on_player_detection_body_entered(body):
+	if body.name == playername:
+		chase = true
+		
+func _on_player_detection_body_exited(body):
+	if body.name == playername:
+		chase = false
+
+func _on_weakness_box_body_entered(body):
+	if body.name == playername:
+		death()
+		player.jump()
+		
+func death():
+	deathAud.play()
+	chase = false
+	anim.play(\"Death\")
+	await anim.animation_finished
+	self.queue_free()
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uu7u5"]
+atlas = ExtResource("2_5gu2o")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ck3i"]
+atlas = ExtResource("2_5gu2o")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt4oa"]
+atlas = ExtResource("2_5gu2o")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khc7d"]
+atlas = ExtResource("2_5gu2o")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfd17"]
+atlas = ExtResource("2_5gu2o")
+region = Rect2(160, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5w0f"]
+atlas = ExtResource("2_5gu2o")
+region = Rect2(200, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4i5e"]
+atlas = ExtResource("3_3taki")
+region = Rect2(0, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dr5o"]
+atlas = ExtResource("3_3taki")
+region = Rect2(40, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e1vjh"]
+atlas = ExtResource("3_3taki")
+region = Rect2(80, 0, 40, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygfph"]
+atlas = ExtResource("3_3taki")
+region = Rect2(120, 0, 40, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rees"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uu7u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ck3i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt4oa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khc7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfd17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5w0f")
+}],
+"loop": false,
+"name": &"Death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4i5e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dr5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e1vjh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygfph")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5v1ar"]
+radius = 12.0
+height = 28.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6jg5"]
+radius = 161.003
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6js8"]
+radius = 15.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_73gbr"]
+radius = 13.0
+height = 26.0
+
+[node name="eagle" type="CharacterBody2D"]
+script = SubResource("GDScript_n6dsg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1rees")
+animation = &"Fly"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-2, 2)
+shape = SubResource("CapsuleShape2D_5v1ar")
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+visible = false
+shape = SubResource("CircleShape2D_i6jg5")
+
+[node name="PlayerHurtBox" type="Area2D" parent="." groups=["Enemy"]]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHurtBox"]
+visible = false
+position = Vector2(-3, 6)
+shape = SubResource("CapsuleShape2D_e6js8")
+
+[node name="WeaknessBox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaknessBox"]
+visible = false
+position = Vector2(-2, -7)
+shape = SubResource("CapsuleShape2D_73gbr")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+visible = false
+
+[connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
+[connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
+[connection signal="body_entered" from="WeaknessBox" to="." method="_on_weakness_box_body_entered"]

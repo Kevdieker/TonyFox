@@ -267,6 +267,7 @@ _data = {
 script = ExtResource("1_rosge")
 
 [node name="HurtBox" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 shape = SubResource("CapsuleShape2D_htko2")

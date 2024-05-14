@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xgt2oukk6dcs"]
+[gd_scene load_steps=14 format=3 uid="uid://xgt2oukk6dcs"]
 
 [ext_resource type="Texture2D" uid="uid://bbxee2v2fxw6o" path="res://assets/tilemaps/tileset.png" id="1_1ortg"]
 [ext_resource type="PackedScene" uid="uid://bppttnio0gv2h" path="res://Char/TonyFox/tony_fox.tscn" id="2_55wgc"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cquqlvdfrdew2" path="res://Levels/Lvl1 Sunny Grass Land/house.png" id="7_qip66"]
 [ext_resource type="Texture2D" uid="uid://btexroiolvmd7" path="res://Levels/Lvl1 Sunny Grass Land/bush.png" id="9_qe80n"]
 [ext_resource type="PackedScene" uid="uid://dq3hg5uyvmqve" path="res://Char/Enemys/scenes/frog.tscn" id="10_w7juf"]
+[ext_resource type="PackedScene" uid="uid://b3pj4wvi5ovjo" path="res://Char/Enemys/scenes/eagle.tscn" id="11_kxl4w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wo3vi"]
 texture = ExtResource("1_1ortg")
@@ -552,8 +553,13 @@ texture = ExtResource("9_qe80n")
 [node name="TonyFox" parent="." instance=ExtResource("2_55wgc")]
 position = Vector2(255, 357)
 
-[node name="Frog" parent="." instance=ExtResource("10_w7juf")]
-position = Vector2(721, 252)
+[node name="Mobs" type="Node" parent="."]
+
+[node name="Frog" parent="Mobs" instance=ExtResource("10_w7juf")]
+position = Vector2(536, 336)
+
+[node name="eagle" parent="Mobs" instance=ExtResource("11_kxl4w")]
+position = Vector2(860, 280)
 
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="CanvasLayer/PauseMenu" method="_on_resumebtn_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="CanvasLayer/PauseMenu" method="_on_restartbtn_pressed"]
