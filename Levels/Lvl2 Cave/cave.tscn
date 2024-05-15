@@ -1123,9 +1123,23 @@ autoplay = "portal"
 position = Vector2(143, 343)
 shape = SubResource("CapsuleShape2D_k2i0h")
 
+[node name="LV3Teleporter" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LV3Teleporter"]
+position = Vector2(880, 334)
+scale = Vector2(1.15517, 1.31481)
+sprite_frames = SubResource("SpriteFrames_n04m5")
+animation = &"portal"
+autoplay = "portal"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LV3Teleporter"]
+position = Vector2(880, 337)
+shape = SubResource("CapsuleShape2D_k2i0h")
+
 [connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="esc_menu/PauseMenu" method="_on_resumebtn_pressed"]
 [connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="esc_menu/PauseMenu" method="_on_restartbtn_pressed"]
 [connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/Optionsbtn" to="esc_menu/PauseMenu" method="_on_optionsbtn_pressed"]
 [connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/BackToMenubtn" to="esc_menu/PauseMenu" method="_on_back_to_menubtn_pressed"]
 [connection signal="body_entered" from="DeathArea" to="esc_menu/PauseMenu" method="_on_death_area_body_entered"]
 [connection signal="body_entered" from="LV1Teleporter" to="esc_menu/PauseMenu" method="_on_lv_1_teleporter_body_entered"]
+[connection signal="body_entered" from="LV3Teleporter" to="esc_menu/PauseMenu" method="_on_lv_3_teleporter_body_entered"]

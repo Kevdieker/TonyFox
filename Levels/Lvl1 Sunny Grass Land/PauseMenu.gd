@@ -50,5 +50,13 @@ func _on_lvl_2_teleporter_body_entered(body):
 		get_tree().change_scene_to_file("res://Levels/Lvl2 Cave/cave.tscn")
 
 
+func _on_lvl_1_teleporter_body_entered(body):
+	get_tree().change_scene_to_file("res://Levels/Lvl1 Sunny Grass Land/overworld.tscn")
+
+
 func _on_lv_1_teleporter_body_entered(body):
 	get_tree().change_scene_to_file("res://Levels/Lvl1 Sunny Grass Land/overworld.tscn")
+
+
+func _on_lv_3_teleporter_body_entered(body):
+	get_tree().change_scene_to_file("res://Levels/Lvl3 Castle/castle.tscn")
