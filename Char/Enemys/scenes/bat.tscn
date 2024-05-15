@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://b3pj4wvi5ovjo"]
+[gd_scene load_steps=22 format=3 uid="uid://uioik1qbv00k"]
 
-[ext_resource type="Texture2D" uid="uid://bnywogq6jypmb" path="res://Char/Enemys/Sprites/enemy-deadth.png" id="2_5gu2o"]
-[ext_resource type="Texture2D" uid="uid://b74xx5nc60tf3" path="res://Char/Enemys/Sprites/eagle/eagle-attack.png" id="3_3taki"]
+[ext_resource type="Texture2D" uid="uid://brgw16qc22afx" path="res://Char/Enemys/Sprites/bat/bat-sheet.png" id="1_c4cgn"]
+[ext_resource type="Texture2D" uid="uid://bnywogq6jypmb" path="res://Char/Enemys/Sprites/enemy-deadth.png" id="1_qvy1m"]
 
-[sub_resource type="GDScript" id="GDScript_n6dsg"]
+[sub_resource type="GDScript" id="GDScript_tmj28"]
 script/source = "extends CharacterBody2D
 
 @onready var player = $\"../../TonyFox\"
@@ -18,14 +18,13 @@ var playername = \"TonyFox\"
 func _ready():
 	anim.play(\"Fly\")
 	
-	
 func _physics_process(delta):
 	if chase == true:
 		playerdistance = (player.position - self.position).normalized()
 		if playerdistance.x > 0:
-			anim.flip_h = true
-		else:
 			anim.flip_h = false
+		else:
+			anim.flip_h = true
 		velocity.x = playerdistance.x * SPEED
 		velocity.y = playerdistance.y * SPEED
 	else:
@@ -54,66 +53,78 @@ func death():
 	self.queue_free()
 "
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uu7u5"]
-atlas = ExtResource("2_5gu2o")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yb5lp"]
+atlas = ExtResource("1_qvy1m")
 region = Rect2(0, 0, 40, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2ck3i"]
-atlas = ExtResource("2_5gu2o")
+[sub_resource type="AtlasTexture" id="AtlasTexture_l65sv"]
+atlas = ExtResource("1_qvy1m")
 region = Rect2(40, 0, 40, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yt4oa"]
-atlas = ExtResource("2_5gu2o")
+[sub_resource type="AtlasTexture" id="AtlasTexture_du0nx"]
+atlas = ExtResource("1_qvy1m")
 region = Rect2(80, 0, 40, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_khc7d"]
-atlas = ExtResource("2_5gu2o")
+[sub_resource type="AtlasTexture" id="AtlasTexture_7v4yj"]
+atlas = ExtResource("1_qvy1m")
 region = Rect2(120, 0, 40, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xfd17"]
-atlas = ExtResource("2_5gu2o")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qncti"]
+atlas = ExtResource("1_qvy1m")
 region = Rect2(160, 0, 40, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x5w0f"]
-atlas = ExtResource("2_5gu2o")
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h520"]
+atlas = ExtResource("1_qvy1m")
 region = Rect2(200, 0, 40, 41)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w4i5e"]
-atlas = ExtResource("3_3taki")
-region = Rect2(0, 0, 40, 41)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uoi3t"]
+atlas = ExtResource("1_c4cgn")
+region = Rect2(0, 0, 53, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1dr5o"]
-atlas = ExtResource("3_3taki")
-region = Rect2(40, 0, 40, 41)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpo0v"]
+atlas = ExtResource("1_c4cgn")
+region = Rect2(53, 0, 53, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e1vjh"]
-atlas = ExtResource("3_3taki")
-region = Rect2(80, 0, 40, 41)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fh8x0"]
+atlas = ExtResource("1_c4cgn")
+region = Rect2(106, 0, 53, 57)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ygfph"]
-atlas = ExtResource("3_3taki")
-region = Rect2(120, 0, 40, 41)
+[sub_resource type="AtlasTexture" id="AtlasTexture_o0peu"]
+atlas = ExtResource("1_c4cgn")
+region = Rect2(159, 0, 53, 57)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_1rees"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7ytr"]
+atlas = ExtResource("1_c4cgn")
+region = Rect2(212, 0, 53, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trkgy"]
+atlas = ExtResource("1_c4cgn")
+region = Rect2(265, 0, 53, 57)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgdhb"]
+atlas = ExtResource("1_c4cgn")
+region = Rect2(318, 0, 53, 57)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v600m"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uu7u5")
+"texture": SubResource("AtlasTexture_yb5lp")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2ck3i")
+"texture": SubResource("AtlasTexture_l65sv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yt4oa")
+"texture": SubResource("AtlasTexture_du0nx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_khc7d")
+"texture": SubResource("AtlasTexture_7v4yj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xfd17")
+"texture": SubResource("AtlasTexture_qncti")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x5w0f")
+"texture": SubResource("AtlasTexture_6h520")
 }],
 "loop": false,
 "name": &"Death",
@@ -121,19 +132,33 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w4i5e")
+"texture": SubResource("AtlasTexture_uoi3t")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1dr5o")
+"texture": SubResource("AtlasTexture_cpo0v")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e1vjh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ygfph")
+"texture": SubResource("AtlasTexture_fh8x0")
 }],
 "loop": true,
 "name": &"Fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o0peu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7ytr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trkgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgdhb")
+}],
+"loop": true,
+"name": &"Sleep",
 "speed": 5.0
 }]
 
@@ -151,16 +176,18 @@ radius = 15.0
 radius = 13.0
 height = 26.0
 
-[node name="eagle" type="CharacterBody2D"]
-script = SubResource("GDScript_n6dsg")
+[node name="bat" type="CharacterBody2D"]
+script = SubResource("GDScript_tmj28")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_1rees")
+position = Vector2(0.875, 4.125)
+scale = Vector2(0.712264, 0.635965)
+sprite_frames = SubResource("SpriteFrames_v600m")
 animation = &"Fly"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-2, 2)
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_5v1ar")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
