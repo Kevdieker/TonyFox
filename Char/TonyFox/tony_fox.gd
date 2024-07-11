@@ -15,7 +15,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var inventory = {
 	"sword": true,
-	"boots": false,
+	"boots": true,
 	"cloak": false
 }
 
@@ -29,6 +29,9 @@ func jump():
 		
 func perform_sword_attack():
 	state_machine.travel("sword_attack")
+	
+func dash():
+	velocity.x = 800	
 
 func _physics_process(delta):
 	set_collision_mask_value(9, true)	
@@ -63,6 +66,7 @@ func _physics_process(delta):
 				state_machine.travel("Idle_s")
 			elif velocity.y > 0:
 				state_machine.travel("Fall_s")
+	
 	else:
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			jump()
@@ -76,6 +80,12 @@ func _physics_process(delta):
 				state_machine.travel("Idle")
 			if velocity.y > 0:
 				state_machine.travel("Fall")
+				
+	if inventory["boots"]:
+		if Input.is_action_just_pressed("dash"):
+			dash()
+				
+		
 	
 	move_and_slide()
 	
