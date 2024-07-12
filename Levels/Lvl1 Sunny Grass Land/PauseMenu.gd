@@ -29,6 +29,8 @@ func _on_restartbtn_pressed():
 	resume()
 	Game.playerHP = 5
 	get_tree().reload_current_scene()
+	
+	
 
 func _on_optionsbtn_pressed():
 	optionsMenu.show()
@@ -61,3 +63,7 @@ func _on_lv_1_teleporter_body_entered(body):
 
 func _on_lv_3_teleporter_body_entered(body):
 	get_tree().change_scene_to_file("res://Levels/Lvl3 Castle/castle.tscn")
+
+
+func _on_checkpoint_pressed():
+	$"../../TonyFox".position =  Game.position

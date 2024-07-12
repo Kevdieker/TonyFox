@@ -1,23 +1,23 @@
 [gd_scene load_steps=21 format=3 uid="uid://0dqp1daho8d7"]
 
-[ext_resource type="Texture2D" uid="uid://bw4syiu3dlv37" path="res://Levels/Lvl2 Cave/tileset.png" id="1_mamx6"]
-[ext_resource type="Texture2D" uid="uid://m8aca4yiaqok" path="res://Levels/Lvl2 Cave/background.png" id="2_c41ld"]
-[ext_resource type="Texture2D" uid="uid://cy6gnncjti4cc" path="res://Levels/Lvl2 Cave/middle-rocks.png" id="3_xx3wi"]
-[ext_resource type="PackedScene" uid="uid://daveoo7qdaa23" path="res://Menus/SettingsMenu/settings_window.tscn" id="4_t0nnh"]
-[ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/PauseMenu.gd" id="5_txvti"]
-[ext_resource type="Texture2D" uid="uid://cbecvvh2yov8h" path="res://Levels/Lvl2 Cave/rock.png" id="6_mftav"]
-[ext_resource type="Texture2D" uid="uid://cxln1847dqhs7" path="res://Levels/Lvl2 Cave/sign.png" id="7_dn5db"]
-[ext_resource type="Texture2D" uid="uid://c0tr1kme2uvix" path="res://Levels/Lvl2 Cave/skulls.png" id="8_78aji"]
-[ext_resource type="PackedScene" uid="uid://bppttnio0gv2h" path="res://Char/TonyFox/tony_fox.tscn" id="9_kneor"]
-[ext_resource type="PackedScene" uid="uid://b5e53kjvf4dnu" path="res://Collectables/Gems/gem.tscn" id="10_8sdwe"]
-[ext_resource type="PackedScene" path="res://Char/Enemys/scenes/bat.tscn" id="11_sym3l"]
-[ext_resource type="Texture2D" uid="uid://dwvt0bbcs3bvb" path="res://Levels/fireball-hit-4.png" id="12_llx7j"]
-[ext_resource type="Texture2D" uid="uid://2rystlju5c4p" path="res://Levels/fireball-hit-5.png" id="13_x68hm"]
-[ext_resource type="Texture2D" uid="uid://drfmgkjeamuqf" path="res://Levels/fireball-hit-6.png" id="14_i7opr"]
-[ext_resource type="PackedScene" uid="uid://cwkhecdidf084" path="res://Collectables/Checkpoint/checkpoint.tscn" id="15_1iwyu"]
+[ext_resource type="Texture2D" uid="uid://bw4syiu3dlv37" path="res://Levels/Lvl2 Cave/tileset.png" id="1_v55lc"]
+[ext_resource type="Texture2D" uid="uid://m8aca4yiaqok" path="res://Levels/Lvl2 Cave/background.png" id="2_jbsfm"]
+[ext_resource type="Texture2D" uid="uid://cy6gnncjti4cc" path="res://Levels/Lvl2 Cave/middle-rocks.png" id="3_aafmm"]
+[ext_resource type="PackedScene" uid="uid://daveoo7qdaa23" path="res://Menus/SettingsMenu/settings_window.tscn" id="4_1obs1"]
+[ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/PauseMenu.gd" id="5_peds1"]
+[ext_resource type="Texture2D" uid="uid://cbecvvh2yov8h" path="res://Levels/Lvl2 Cave/rock.png" id="6_qdkw2"]
+[ext_resource type="Texture2D" uid="uid://cxln1847dqhs7" path="res://Levels/Lvl2 Cave/sign.png" id="7_fxg58"]
+[ext_resource type="Texture2D" uid="uid://c0tr1kme2uvix" path="res://Levels/Lvl2 Cave/skulls.png" id="8_sh24o"]
+[ext_resource type="PackedScene" uid="uid://bppttnio0gv2h" path="res://Char/TonyFox/tony_fox.tscn" id="9_ogda6"]
+[ext_resource type="PackedScene" path="res://Char/Enemys/scenes/bat.tscn" id="10_8ftgw"]
+[ext_resource type="PackedScene" uid="uid://b5e53kjvf4dnu" path="res://Collectables/Gems/gem.tscn" id="11_ijs34"]
+[ext_resource type="Texture2D" uid="uid://dwvt0bbcs3bvb" path="res://Levels/fireball-hit-4.png" id="12_o7tp4"]
+[ext_resource type="Texture2D" uid="uid://2rystlju5c4p" path="res://Levels/fireball-hit-5.png" id="13_qo11v"]
+[ext_resource type="Texture2D" uid="uid://drfmgkjeamuqf" path="res://Levels/fireball-hit-6.png" id="14_j88f6"]
+[ext_resource type="PackedScene" uid="uid://cwkhecdidf084" path="res://Collectables/Checkpoint/checkpoint.tscn" id="15_n2h2y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qid1f"]
-texture = ExtResource("1_mamx6")
+texture = ExtResource("1_v55lc")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -970,13 +970,13 @@ size = Vector2(1796.5, 77.5)
 animations = [{
 "frames": [{
 "duration": 2.01,
-"texture": ExtResource("12_llx7j")
+"texture": ExtResource("12_o7tp4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("13_x68hm")
+"texture": ExtResource("13_qo11v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_i7opr")
+"texture": ExtResource("14_j88f6")
 }],
 "loop": true,
 "name": &"portal",
@@ -1003,7 +1003,7 @@ motion_mirroring = Vector2(1150, 0)
 [node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(576, 323)
 scale = Vector2(2.66667, 2.69167)
-texture = ExtResource("2_c41ld")
+texture = ExtResource("2_jbsfm")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.95, 0.95)
@@ -1012,9 +1012,9 @@ motion_mirroring = Vector2(1408, 0)
 [node name="Middle-rocks" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(910, 323)
 scale = Vector2(2.11735, 2.67917)
-texture = ExtResource("3_xx3wi")
+texture = ExtResource("3_aafmm")
 
-[node name="SettingsWindow" parent="." instance=ExtResource("4_t0nnh")]
+[node name="SettingsWindow" parent="." instance=ExtResource("4_1obs1")]
 visible = false
 
 [node name="esc_menu" type="CanvasLayer" parent="."]
@@ -1034,7 +1034,7 @@ offset_right = 131.5
 offset_bottom = 111.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("5_txvti")
+script = ExtResource("5_peds1")
 
 [node name="PanelContainer" type="PanelContainer" parent="esc_menu/PauseMenu"]
 custom_minimum_size = Vector2(200, 200)
@@ -1076,33 +1076,33 @@ bus = &"Music"
 
 [node name="Rock" type="Sprite2D" parent="Proporties"]
 position = Vector2(427, 360)
-texture = ExtResource("6_mftav")
+texture = ExtResource("6_qdkw2")
 
 [node name="Sign" type="Sprite2D" parent="Proporties"]
 position = Vector2(307, 358)
-texture = ExtResource("7_dn5db")
+texture = ExtResource("7_fxg58")
 
 [node name="Skulls" type="Sprite2D" parent="Proporties"]
 position = Vector2(381, 364)
-texture = ExtResource("8_78aji")
+texture = ExtResource("8_sh24o")
 
-[node name="TonyFox" parent="." instance=ExtResource("9_kneor")]
+[node name="TonyFox" parent="." instance=ExtResource("9_ogda6")]
 position = Vector2(255, 357)
 
 [node name="Mobs" type="Node" parent="."]
 
-[node name="bat" parent="Mobs" instance=ExtResource("11_sym3l")]
+[node name="bat" parent="Mobs" instance=ExtResource("10_8ftgw")]
 position = Vector2(416, 293)
 
-[node name="bat2" parent="Mobs" instance=ExtResource("11_sym3l")]
+[node name="bat2" parent="Mobs" instance=ExtResource("10_8ftgw")]
 position = Vector2(462, 325)
 
-[node name="bat3" parent="Mobs" instance=ExtResource("11_sym3l")]
+[node name="bat3" parent="Mobs" instance=ExtResource("10_8ftgw")]
 position = Vector2(503, 301)
 
 [node name="Collectables" type="Node" parent="."]
 
-[node name="Gem" parent="Collectables" instance=ExtResource("10_8sdwe")]
+[node name="Gem" parent="Collectables" instance=ExtResource("11_ijs34")]
 position = Vector2(605, 333)
 
 [node name="DeathArea" type="Area2D" parent="."]
@@ -1137,7 +1137,7 @@ autoplay = "portal"
 position = Vector2(880, 337)
 shape = SubResource("CapsuleShape2D_k2i0h")
 
-[node name="Checkpoint" parent="." instance=ExtResource("15_1iwyu")]
+[node name="Checkpoint" parent="." instance=ExtResource("15_n2h2y")]
 position = Vector2(748, 351)
 
 [connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="esc_menu/PauseMenu" method="_on_resumebtn_pressed"]

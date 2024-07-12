@@ -8,5 +8,6 @@ func _on_body_entered(body):
 		print("Checkpoint reached at position:", Game.position)
 		anim.play("Activated")
 		var current_scene = get_tree().current_scene
-		Game.level = current_scene
+		Game.level = current_scene.name
 		print("Level saved:", Game.level)
+		Utils.save_game()

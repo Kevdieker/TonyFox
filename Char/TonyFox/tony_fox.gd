@@ -16,13 +16,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 
+
 var left = false
 
 var inventory = {
 	"sword": true,
 	"boots": true,
 }
-
+  
 func jump():
 	jumpAud.play()
 	velocity.y = JUMP_VELOCITY
@@ -121,8 +122,7 @@ func _on_hurt_box_area_entered(area):
 		print(Game.playerHP)
 	if area.is_in_group("345"): #funktioniert mit enemy weeknessbox??
 		print("weaknessbox")
-	
-	
+
 
 func _on_sword_hit_box_area_entered(area):
 	if area.is_in_group("hurtbox"):
