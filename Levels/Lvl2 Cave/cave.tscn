@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://0dqp1daho8d7"]
+[gd_scene load_steps=21 format=3 uid="uid://0dqp1daho8d7"]
 
 [ext_resource type="Texture2D" uid="uid://bw4syiu3dlv37" path="res://Levels/Lvl2 Cave/tileset.png" id="1_mamx6"]
 [ext_resource type="Texture2D" uid="uid://m8aca4yiaqok" path="res://Levels/Lvl2 Cave/background.png" id="2_c41ld"]
@@ -10,10 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://c0tr1kme2uvix" path="res://Levels/Lvl2 Cave/skulls.png" id="8_78aji"]
 [ext_resource type="PackedScene" uid="uid://bppttnio0gv2h" path="res://Char/TonyFox/tony_fox.tscn" id="9_kneor"]
 [ext_resource type="PackedScene" uid="uid://b5e53kjvf4dnu" path="res://Collectables/Gems/gem.tscn" id="10_8sdwe"]
-[ext_resource type="PackedScene" uid="uid://uioik1qbv00k" path="res://Char/Enemys/scenes/bat.tscn" id="11_sym3l"]
+[ext_resource type="PackedScene" path="res://Char/Enemys/scenes/bat.tscn" id="11_sym3l"]
 [ext_resource type="Texture2D" uid="uid://dwvt0bbcs3bvb" path="res://Levels/fireball-hit-4.png" id="12_llx7j"]
 [ext_resource type="Texture2D" uid="uid://2rystlju5c4p" path="res://Levels/fireball-hit-5.png" id="13_x68hm"]
 [ext_resource type="Texture2D" uid="uid://drfmgkjeamuqf" path="res://Levels/fireball-hit-6.png" id="14_i7opr"]
+[ext_resource type="PackedScene" uid="uid://cwkhecdidf084" path="res://Collectables/Checkpoint/checkpoint.tscn" id="15_1iwyu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qid1f"]
 texture = ExtResource("1_mamx6")
@@ -1135,6 +1136,9 @@ autoplay = "portal"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LV3Teleporter"]
 position = Vector2(880, 337)
 shape = SubResource("CapsuleShape2D_k2i0h")
+
+[node name="Checkpoint" parent="." instance=ExtResource("15_1iwyu")]
+position = Vector2(748, 351)
 
 [connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="esc_menu/PauseMenu" method="_on_resumebtn_pressed"]
 [connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="esc_menu/PauseMenu" method="_on_restartbtn_pressed"]
