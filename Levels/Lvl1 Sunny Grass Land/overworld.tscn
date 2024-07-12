@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://xgt2oukk6dcs"]
+[gd_scene load_steps=26 format=3 uid="uid://xgt2oukk6dcs"]
 
 [ext_resource type="Texture2D" uid="uid://bw4syiu3dlv37" path="res://Levels/Lvl2 Cave/tileset.png" id="1_30sdp"]
 [ext_resource type="PackedScene" uid="uid://bppttnio0gv2h" path="res://Char/TonyFox/tony_fox.tscn" id="2_55wgc"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://drfmgkjeamuqf" path="res://Levels/fireball-hit-6.png" id="15_6w821"]
 [ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/HP.gd" id="16_xac14"]
 [ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/CoinCount.gd" id="18_ym7s1"]
+[ext_resource type="PackedScene" uid="uid://cwkhecdidf084" path="res://Collectables/Checkpoint/checkpoint.tscn" id="20_oy1nt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l3cvm"]
 texture = ExtResource("1_30sdp")
@@ -1180,6 +1181,12 @@ offset_bottom = 78.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Coins:"
 script = ExtResource("18_ym7s1")
+
+[node name="Checkpoint" parent="." instance=ExtResource("20_oy1nt")]
+position = Vector2(624, 351)
+
+[node name="Checkpoint2" parent="." instance=ExtResource("20_oy1nt")]
+position = Vector2(741, 325)
 
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="etc_menu/PauseMenu" method="_on_resumebtn_pressed"]
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="etc_menu/PauseMenu" method="_on_restartbtn_pressed"]
