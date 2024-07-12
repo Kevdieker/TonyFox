@@ -237,7 +237,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrqpp"]
-size = Vector2(21.5257, 22.1999)
+size = Vector2(29.7627, 42.1)
 
 [sub_resource type="Animation" id="Animation_kfrfk"]
 resource_name = "Fall"
@@ -636,7 +636,7 @@ frame = 1
 position = Vector2(-1, 8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/SwordHitBox"]
-position = Vector2(18, -1)
+position = Vector2(27.95, -5.11856)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_wrqpp")
 disabled = true
