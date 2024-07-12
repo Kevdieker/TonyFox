@@ -1017,55 +1017,6 @@ texture = ExtResource("3_aafmm")
 [node name="SettingsWindow" parent="." instance=ExtResource("4_1obs1")]
 visible = false
 
-[node name="esc_menu" type="CanvasLayer" parent="."]
-process_mode = 3
-
-[node name="PauseMenu" type="Control" parent="esc_menu"]
-visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -131.5
-offset_top = -111.5
-offset_right = 131.5
-offset_bottom = 111.5
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("5_peds1")
-
-[node name="PanelContainer" type="PanelContainer" parent="esc_menu/PauseMenu"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="esc_menu/PauseMenu/PanelContainer"]
-process_mode = 3
-layout_mode = 2
-alignment = 1
-
-[node name="Resumebtn" type="Button" parent="esc_menu/PauseMenu/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Resume"
-
-[node name="Restartbtn" type="Button" parent="esc_menu/PauseMenu/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Restart"
-
-[node name="Optionsbtn" type="Button" parent="esc_menu/PauseMenu/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Options"
-
-[node name="BackToMenubtn" type="Button" parent="esc_menu/PauseMenu/PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Back to Menu"
-
 [node name="BackroundMusic" type="AudioStreamPlayer2D" parent="."]
 process_mode = 3
 volume_db = 0.405
@@ -1140,10 +1091,63 @@ shape = SubResource("CapsuleShape2D_k2i0h")
 [node name="Checkpoint" parent="." instance=ExtResource("15_n2h2y")]
 position = Vector2(748, 351)
 
-[connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="esc_menu/PauseMenu" method="_on_resumebtn_pressed"]
-[connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="esc_menu/PauseMenu" method="_on_restartbtn_pressed"]
-[connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/Optionsbtn" to="esc_menu/PauseMenu" method="_on_optionsbtn_pressed"]
-[connection signal="pressed" from="esc_menu/PauseMenu/PanelContainer/VBoxContainer/BackToMenubtn" to="esc_menu/PauseMenu" method="_on_back_to_menubtn_pressed"]
-[connection signal="body_entered" from="DeathArea" to="esc_menu/PauseMenu" method="_on_death_area_body_entered"]
-[connection signal="body_entered" from="LV1Teleporter" to="esc_menu/PauseMenu" method="_on_lv_1_teleporter_body_entered"]
-[connection signal="body_entered" from="LV3Teleporter" to="esc_menu/PauseMenu" method="_on_lv_3_teleporter_body_entered"]
+[node name="etc_menu" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="PauseMenu" type="Control" parent="etc_menu"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.5
+offset_top = -111.5
+offset_right = 131.5
+offset_bottom = 111.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_peds1")
+
+[node name="PanelContainer" type="PanelContainer" parent="etc_menu/PauseMenu"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="etc_menu/PauseMenu/PanelContainer"]
+process_mode = 3
+layout_mode = 2
+alignment = 1
+
+[node name="Resumebtn" type="Button" parent="etc_menu/PauseMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="Checkpoint" type="Button" parent="etc_menu/PauseMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "load last Checkpoint"
+
+[node name="Restartbtn" type="Button" parent="etc_menu/PauseMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart"
+
+[node name="Optionsbtn" type="Button" parent="etc_menu/PauseMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="BackToMenubtn" type="Button" parent="etc_menu/PauseMenu/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Back to Menu"
+
+[connection signal="body_entered" from="LV1Teleporter" to="etc_menu/PauseMenu" method="_on_lv_1_teleporter_body_entered"]
+[connection signal="body_entered" from="LV3Teleporter" to="etc_menu/PauseMenu" method="_on_lv_3_teleporter_body_entered"]
+[connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="etc_menu/PauseMenu" method="_on_resumebtn_pressed"]
+[connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Checkpoint" to="etc_menu/PauseMenu" method="_on_checkpoint_pressed"]
+[connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="etc_menu/PauseMenu" method="_on_restartbtn_pressed"]
+[connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Optionsbtn" to="etc_menu/PauseMenu" method="_on_optionsbtn_pressed"]
+[connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/BackToMenubtn" to="etc_menu/PauseMenu" method="_on_back_to_menubtn_pressed"]

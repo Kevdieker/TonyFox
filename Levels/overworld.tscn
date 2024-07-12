@@ -1272,7 +1272,7 @@ shape = SubResource("RectangleShape2D_2ynlm")
 [node name="LVL2Teleporter" type="Area2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LVL2Teleporter"]
-position = Vector2(2934, 364)
+position = Vector2(196.75, 320.75)
 scale = Vector2(1.15517, 1.31481)
 sprite_frames = SubResource("SpriteFrames_4gj1r")
 animation = &"portal"
@@ -1280,7 +1280,7 @@ autoplay = "portal"
 frame_progress = 0.528363
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LVL2Teleporter"]
-position = Vector2(2939, 366)
+position = Vector2(201.75, 322.75)
 shape = SubResource("CapsuleShape2D_1ykt1")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
