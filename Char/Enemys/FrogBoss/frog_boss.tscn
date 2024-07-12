@@ -12,6 +12,9 @@ var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var player = $\"../TonyFox\"
 @onready var anim = $AnimatedSprite2D
 @onready var deathAud = $DeathSound
+@onready var lbl1 = $\"../Label\"
+@onready var port = $\"../LVL1Teleporter\"
+
 
 var playerdistance
 var playername = \"TonyFox\"
@@ -70,6 +73,9 @@ func death():
 	anim.play(\"Death\")
 	await anim.animation_finished
 	self.queue_free()
+	lbl1.show()
+	port.show()
+	
 	
 "
 

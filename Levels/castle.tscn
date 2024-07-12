@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cb8mjdfc0qvb6"]
+[gd_scene load_steps=24 format=3 uid="uid://cb8mjdfc0qvb6"]
 
 [ext_resource type="Texture2D" uid="uid://bbxee2v2fxw6o" path="res://assets/tilemaps/tileset.png" id="1_6bgo4"]
 [ext_resource type="Texture2D" uid="uid://dvws8fa41in6f" path="res://Levels/Lvl3 Castle/tileset.png" id="2_m8e7n"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://drfmgkjeamuqf" path="res://Levels/fireball-hit-6.png" id="12_7qe28"]
 [ext_resource type="PackedScene" uid="uid://b828wpe82n8ie" path="res://Char/Enemys/FrogBoss/frog_boss.tscn" id="13_pw43p"]
 [ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/HP.gd" id="14_wjr3v"]
+[ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/CoinCount.gd" id="15_r0fdb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wo3vi"]
 texture = ExtResource("1_6bgo4")
@@ -1554,6 +1555,7 @@ position = Vector2(898.75, 609.25)
 shape = SubResource("RectangleShape2D_2ynlm")
 
 [node name="LVL1Teleporter" type="Area2D" parent="."]
+visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LVL1Teleporter"]
 position = Vector2(1131, 365)
@@ -1583,6 +1585,15 @@ shape = SubResource("CapsuleShape2D_lljoy")
 [node name="FrogBoss" parent="." instance=ExtResource("13_pw43p")]
 position = Vector2(666, 287)
 
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 906.0
+offset_top = 243.0
+offset_right = 1207.0
+offset_bottom = 292.0
+text = "YOU DID IT!!!!
+now peace is back and u can go home"
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HP" type="Label" parent="CanvasLayer"]
@@ -1592,9 +1603,18 @@ offset_right = 76.0
 offset_bottom = 52.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "HP"
+text = "HP:"
 script = ExtResource("14_wjr3v")
 metadata/_edit_use_anchors_ = true
+
+[node name="CoinCount" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 55.0
+offset_right = 67.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Coins:"
+script = ExtResource("15_r0fdb")
 
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="etc_menu/PauseMenu" method="_on_resumebtn_pressed"]
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="etc_menu/PauseMenu" method="_on_restartbtn_pressed"]
