@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://xgt2oukk6dcs"]
+[gd_scene load_steps=25 format=3 uid="uid://xgt2oukk6dcs"]
 
 [ext_resource type="Texture2D" uid="uid://bw4syiu3dlv37" path="res://Levels/Lvl2 Cave/tileset.png" id="1_30sdp"]
 [ext_resource type="PackedScene" uid="uid://bppttnio0gv2h" path="res://Char/TonyFox/tony_fox.tscn" id="2_55wgc"]
@@ -12,10 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://dq3hg5uyvmqve" path="res://Char/Enemys/scenes/frog.tscn" id="10_w7juf"]
 [ext_resource type="PackedScene" uid="uid://b3pj4wvi5ovjo" path="res://Char/Enemys/scenes/eagle.tscn" id="11_kxl4w"]
 [ext_resource type="PackedScene" uid="uid://b5e53kjvf4dnu" path="res://Collectables/Gems/gem.tscn" id="12_e0jgx"]
+[ext_resource type="PackedScene" uid="uid://ciix1v3prmho3" path="res://Collectables/Coin/coin.tscn" id="13_87qx3"]
 [ext_resource type="Texture2D" uid="uid://dwvt0bbcs3bvb" path="res://Levels/fireball-hit-4.png" id="13_um6oe"]
 [ext_resource type="Texture2D" uid="uid://2rystlju5c4p" path="res://Levels/fireball-hit-5.png" id="14_4vtwc"]
+[ext_resource type="Script" path="res://Collectables/Coin/coin.gd" id="14_x41xm"]
 [ext_resource type="Texture2D" uid="uid://drfmgkjeamuqf" path="res://Levels/fireball-hit-6.png" id="15_6w821"]
 [ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/HP.gd" id="16_xac14"]
+[ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/CoinCount.gd" id="18_ym7s1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l3cvm"]
 texture = ExtResource("1_30sdp")
@@ -1132,6 +1135,10 @@ position = Vector2(908, 290)
 [node name="Gem" parent="Collectables" instance=ExtResource("12_e0jgx")]
 position = Vector2(286, 349)
 
+[node name="Coin" parent="Collectables" instance=ExtResource("13_87qx3")]
+position = Vector2(435, 318)
+script = ExtResource("14_x41xm")
+
 [node name="DeathArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathArea"]
@@ -1161,9 +1168,18 @@ offset_right = 76.0
 offset_bottom = 52.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 20
-text = "HP"
+text = "HP:"
 script = ExtResource("16_xac14")
 metadata/_edit_use_anchors_ = true
+
+[node name="CoinCount" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 55.0
+offset_right = 67.0
+offset_bottom = 78.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Coins:"
+script = ExtResource("18_ym7s1")
 
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="etc_menu/PauseMenu" method="_on_resumebtn_pressed"]
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="etc_menu/PauseMenu" method="_on_restartbtn_pressed"]
