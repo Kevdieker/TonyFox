@@ -1,1 +1,1 @@
-{"coins":0,"inventory":{"boots":false,"sword":false},"level":"Overworld","playerHP":5,"position":{"x":227,"y":350}}
+{"coins":0,"inventory":{"boots":true,"sword":true},"level":"Cave","playerHP":2,"position":{"x":2182,"y":336}}

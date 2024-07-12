@@ -176,7 +176,7 @@ radius = 15.0
 radius = 13.0
 height = 26.0
 
-[node name="bat" type="CharacterBody2D"]
+[node name="bat" type="CharacterBody2D" groups=["123"]]
 script = SubResource("GDScript_tmj28")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

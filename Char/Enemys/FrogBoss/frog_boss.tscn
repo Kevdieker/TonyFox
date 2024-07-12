@@ -194,7 +194,7 @@ size = Vector2(42, 20)
 radius = 33.0
 height = 66.0
 
-[node name="FrogBoss" type="CharacterBody2D"]
+[node name="FrogBoss" type="CharacterBody2D" groups=["123"]]
 script = SubResource("GDScript_5n3rv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

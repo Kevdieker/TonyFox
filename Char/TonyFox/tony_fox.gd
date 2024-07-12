@@ -120,6 +120,8 @@ func _on_hurt_box_area_entered(area):
 		print("weaknessbox")
 
 
-func _on_sword_hit_box_area_entered(area):
-	if area.is_in_group("hurtbox"):
-		area.take_damage()
+func _on_sword_hit_box_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	print("hit")
+	if body.is_in_group("123"):
+		print("kevin")
+		body.death()

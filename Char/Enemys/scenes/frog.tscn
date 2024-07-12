@@ -195,7 +195,7 @@ height = 26.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_185ap"]
 radius = 12.0
 
-[node name="Frog" type="CharacterBody2D"]
+[node name="Frog" type="CharacterBody2D" groups=["123"]]
 script = SubResource("GDScript_5n3rv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

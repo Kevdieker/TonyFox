@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://bppttnio0gv2h"]
+[gd_scene load_steps=60 format=3 uid="uid://bppttnio0gv2h"]
 
 [ext_resource type="Script" path="res://Char/TonyFox/tony_fox.gd" id="1_rosge"]
 [ext_resource type="Texture2D" uid="uid://bortc884nt6mk" path="res://assets/Player/sprites/player.png" id="2_lp6mc"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://2jv1ymkjfmhu" path="res://assets/Player/sprites/n-sword_idle-sheet.png" id="7_a2esf"]
 [ext_resource type="Texture2D" uid="uid://gkfxdvsgqomj" path="res://assets/Player/sprites/sword_jump.png" id="8_mk8lf"]
 [ext_resource type="Texture2D" uid="uid://botoa88hr0byw" path="res://assets/Player/sprites/sword_run.png" id="9_a188b"]
-[ext_resource type="Script" path="res://scripts/Hitbox.gd" id="10_et60y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_htko2"]
 radius = 11.0
@@ -436,6 +435,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [1]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/SwordHitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_855n0"]
 resource_name = "Run"
@@ -521,6 +532,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D/SwordHitBox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_midw6"]
@@ -610,14 +633,13 @@ animation = &"Idle0"
 frame = 1
 
 [node name="SwordHitBox" type="Area2D" parent="AnimatedSprite2D"]
-visible = false
 position = Vector2(-1, 8)
-script = ExtResource("10_et60y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/SwordHitBox"]
 position = Vector2(18, -1)
 rotation = -1.5708
 shape = SubResource("RectangleShape2D_wrqpp")
+disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.8, 1.8)
@@ -646,4 +668,4 @@ tree_root = SubResource("AnimationNodeStateMachine_0bwvf")
 anim_player = NodePath("../AnimationPlayer")
 
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
-[connection signal="area_entered" from="AnimatedSprite2D/SwordHitBox" to="." method="_on_sword_hit_box_area_entered"]
+[connection signal="body_shape_entered" from="AnimatedSprite2D/SwordHitBox" to="." method="_on_sword_hit_box_body_shape_entered"]
