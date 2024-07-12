@@ -48,7 +48,7 @@ func death():
 
 func _physics_process(delta):
 	
-	if Game.playerHP < 0:
+	if Game.playerHP <= 0:
 		death()
 	
 	set_collision_mask_value(9, true)	

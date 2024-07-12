@@ -2,6 +2,7 @@ extends Control
 @onready var optionsMenu = $"../../SettingsWindow"
 @onready var pauseMenu = $"."
 @onready var Resumebtn = $PanelContainer/VBoxContainer/Resumebtn
+@onready var Checkpointbtn = $PanelContainer/VBoxContainer/Checkpoint
 
 func resume():
 	get_tree().paused = false
@@ -29,8 +30,6 @@ func _on_restartbtn_pressed():
 	resume()
 	Game.playerHP = 5
 	get_tree().reload_current_scene()
-	
-	
 
 func _on_optionsbtn_pressed():
 	optionsMenu.show()
@@ -44,26 +43,29 @@ func _on_back_to_menubtn_pressed():
 func _on_death_area_body_entered(body):
 	if body.name == "TonyFox":
 		Resumebtn.hide()
+		Checkpointbtn.hide()
 		pauseMenu.show()
 		pause()
 
 
 func _on_lvl_2_teleporter_body_entered(body):
 	if body.name == "TonyFox":
-		get_tree().change_scene_to_file("res://Levels/Lvl2 Cave/cave.tscn")
+		get_tree().change_scene_to_file("res://Levels/cave.tscn")
 
 
 func _on_lvl_1_teleporter_body_entered(body):
-	get_tree().change_scene_to_file("res://Levels/Lvl1 Sunny Grass Land/overworld.tscn")
+	get_tree().change_scene_to_file("res://Levels/overworld.tscn")
 
 
 func _on_lv_1_teleporter_body_entered(body):
-	get_tree().change_scene_to_file("res://Levels/Lvl1 Sunny Grass Land/overworld.tscn")
+	get_tree().change_scene_to_file("res://Levels/overworld.tscn")
 
 
 func _on_lv_3_teleporter_body_entered(body):
-	get_tree().change_scene_to_file("res://Levels/Lvl3 Castle/castle.tscn")
+	get_tree().change_scene_to_file("res://Levels/castle.tscn")
 
 
 func _on_checkpoint_pressed():
-	$"../../TonyFox".position =  Game.position
+		pauseMenu.hide()
+		$"../../TonyFox".position =  Game.position
+		resume()

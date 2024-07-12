@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://xgt2oukk6dcs"]
+[gd_scene load_steps=27 format=3 uid="uid://xgt2oukk6dcs"]
 
 [ext_resource type="Texture2D" uid="uid://bw4syiu3dlv37" path="res://Levels/Lvl2 Cave/tileset.png" id="1_5vg6l"]
 [ext_resource type="Texture2D" uid="uid://dtdikq4kxxm1x" path="res://Levels/Lvl1 Sunny Grass Land/back.png" id="2_ww7o3"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/HP.gd" id="18_l8erv"]
 [ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/CoinCount.gd" id="19_r6n4p"]
 [ext_resource type="PackedScene" uid="uid://cwkhecdidf084" path="res://Collectables/Checkpoint/checkpoint.tscn" id="20_clb41"]
+[ext_resource type="PackedScene" uid="uid://c5qwawra7jrkb" path="res://Char/Enemys/pilze_boss/mushy.tscn" id="21_hr5es"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l3cvm"]
 texture = ExtResource("1_5vg6l")
@@ -1053,6 +1054,7 @@ visible = false
 process_mode = 3
 
 [node name="PauseMenu" type="Control" parent="etc_menu"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -1133,6 +1135,9 @@ position = Vector2(821, 281)
 
 [node name="eagle" parent="Mobs" instance=ExtResource("11_hkb2i")]
 position = Vector2(908, 290)
+
+[node name="mushy" parent="Mobs" instance=ExtResource("21_hr5es")]
+position = Vector2(706, 264)
 
 [node name="Collectables" type="Node" parent="."]
 
