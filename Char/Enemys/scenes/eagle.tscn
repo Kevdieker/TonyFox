@@ -152,6 +152,7 @@ radius = 13.0
 height = 26.0
 
 [node name="eagle" type="CharacterBody2D" groups=["123"]]
+motion_mode = 1
 script = SubResource("GDScript_n6dsg")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
