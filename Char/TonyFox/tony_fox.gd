@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
+const DASH_VELOCITY = 1500.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 
@@ -12,6 +13,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 
+var left = false
 
 var inventory = {
 	"sword": true,
@@ -31,7 +33,10 @@ func perform_sword_attack():
 	state_machine.travel("sword_attack")
 	
 func dash():
-	velocity.x = 800	
+	if left == false:
+		velocity.x += DASH_VELOCITY
+	else:
+		velocity.x -= DASH_VELOCITY
 
 func _physics_process(delta):
 	set_collision_mask_value(9, true)	
@@ -44,8 +49,10 @@ func _physics_process(delta):
 	var direction = Input.get_axis("ui_left", "ui_right")
 	if direction == -1:
 		sprite.flip_h = true
+		left = true
 	elif direction == 1:
 		sprite.flip_h = false
+		left = false
 
 	if inventory["sword"]:
 		if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("attack") or direction:
