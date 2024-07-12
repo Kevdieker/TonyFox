@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cb8mjdfc0qvb6"]
+[gd_scene load_steps=23 format=3 uid="uid://cb8mjdfc0qvb6"]
 
 [ext_resource type="Texture2D" uid="uid://bbxee2v2fxw6o" path="res://assets/tilemaps/tileset.png" id="1_p5ba6"]
 [ext_resource type="Texture2D" uid="uid://dvws8fa41in6f" path="res://Levels/Lvl3 Castle/tileset.png" id="2_c1ujn"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dwvt0bbcs3bvb" path="res://Levels/fireball-hit-4.png" id="9_3qbst"]
 [ext_resource type="Texture2D" uid="uid://2rystlju5c4p" path="res://Levels/fireball-hit-5.png" id="10_x37gu"]
 [ext_resource type="Texture2D" uid="uid://drfmgkjeamuqf" path="res://Levels/fireball-hit-6.png" id="11_m7vi8"]
+[ext_resource type="PackedScene" uid="uid://b828wpe82n8ie" path="res://Char/Enemys/FrogBoss/frog_boss.tscn" id="13_kbtvu"]
+[ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/HP.gd" id="14_ltixt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wo3vi"]
 texture = ExtResource("1_p5ba6")
@@ -1577,6 +1579,22 @@ autoplay = "portal"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LVL2Teleporter"]
 position = Vector2(140, 343)
 shape = SubResource("CapsuleShape2D_lljoy")
+
+[node name="FrogBoss" parent="." instance=ExtResource("13_kbtvu")]
+position = Vector2(666, 287)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HP" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 29.0
+offset_right = 76.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "HP"
+script = ExtResource("14_ltixt")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="etc_menu/PauseMenu" method="_on_resumebtn_pressed"]
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="etc_menu/PauseMenu" method="_on_restartbtn_pressed"]

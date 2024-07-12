@@ -47,7 +47,7 @@ func death():
 
 func _physics_process(delta):
 	
-	if Game.playerHP == 0:
+	if Game.playerHP < 0:
 		death()
 	
 	set_collision_mask_value(9, true)	
@@ -112,11 +112,17 @@ func acquire_item(item_name: String):
 		inventory[item_name] = true
 
 func _on_hurt_box_area_entered(area):
+	if area.is_in_group("Boss"):
+		print("Bossdamage")
+		Game.playerHP -= 1
 	if area.is_in_group("123"): #funktioniert mit enemy weeknessbox??
-		print("Kevin")
+		print("Ouch")
 		Game.playerHP -= 1
 		print(Game.playerHP)
-		
+	if area.is_in_group("345"): #funktioniert mit enemy weeknessbox??
+		print("weaknessbox")
+	
+	
 
 func _on_sword_hit_box_area_entered(area):
 	if area.is_in_group("hurtbox"):

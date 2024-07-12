@@ -9,7 +9,7 @@
 script/source = "extends CharacterBody2D
 
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
-@onready var player = $\"../../TonyFox\"
+@onready var player = $\"../TonyFox\"
 @onready var anim = $AnimatedSprite2D
 @onready var deathAud = $DeathSound
 
@@ -181,28 +181,30 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5v1ar"]
-radius = 7.0
-height = 14.0
+radius = 26.0
+height = 52.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6jg5"]
 radius = 244.002
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_73gbr"]
-radius = 6.0
-height = 26.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy2wy"]
+size = Vector2(42, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_185ap"]
-radius = 12.0
+radius = 33.0
+height = 66.0
 
 [node name="FrogBoss" type="CharacterBody2D"]
 script = SubResource("GDScript_5n3rv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_senck")
 animation = &"Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+visible = false
+position = Vector2(-2, 6)
 shape = SubResource("CapsuleShape2D_5v1ar")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
@@ -211,20 +213,21 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_i6jg5")
 
-[node name="WeaknessBox" type="Area2D" parent="." groups=["123"]]
+[node name="WeaknessBox" type="Area2D" parent="." groups=["345", "Boss"]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaknessBox" groups=["123"]]
-position = Vector2(0, -4)
-shape = SubResource("CapsuleShape2D_73gbr")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaknessBox" groups=["Boss"]]
+position = Vector2(-2, -25)
+shape = SubResource("RectangleShape2D_wy2wy")
 
-[node name="HurtBox" type="Area2D" parent="." groups=["123", "enemy", "hurtbox"]]
+[node name="HurtBox" type="Area2D" parent="." groups=["123", "Boss", "enemy", "hurtbox"]]
 script = ExtResource("4_bul6d")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" groups=["123"]]
-position = Vector2(0, 1)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" groups=["123", "Boss"]]
+position = Vector2(-2, 7)
 shape = SubResource("CapsuleShape2D_185ap")
 
 [node name="DeathSound" type="AudioStreamPlayer2D" parent="."]
+visible = false
 
 [connection signal="body_entered" from="PlayerDetection" to="." method="_on_player_detection_body_entered"]
 [connection signal="body_exited" from="PlayerDetection" to="." method="_on_player_detection_body_exited"]
