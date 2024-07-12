@@ -8,3 +8,4 @@ var inventory = {
 	"sword": false,
 	"boots": false
 }
+var killedfrog = false

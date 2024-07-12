@@ -5,7 +5,6 @@ const JUMP_VELOCITY = -400.0
 const DASH_VELOCITY = 1500.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
 @onready var anim = $AnimationPlayer
 @onready var jumpAud = $JumpAud
 @onready var sprite = $AnimatedSprite2D
@@ -19,15 +18,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var left = false
 
-var inventory = {
-	"sword": true,
-	"boots": true,
-}
   
 func jump():
 	jumpAud.play()
 	velocity.y = JUMP_VELOCITY
-	if inventory["sword"]:
+	if Game.inventory["sword"]:
 		state_machine.travel("Jump_s")
 	else:
 		state_machine.travel("Jump")
@@ -67,7 +62,7 @@ func _physics_process(delta):
 		sprite.flip_h = false
 		left = false
 
-	if inventory["sword"]:
+	if Game.inventory["sword"]:
 		if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("attack") or direction:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				jump()
@@ -101,7 +96,7 @@ func _physics_process(delta):
 			if velocity.y > 0:
 				state_machine.travel("Fall")
 				
-	if inventory["boots"]:
+	if Game.inventory["boots"]:
 		if Input.is_action_just_pressed("dash"):
 			dash()
 				
@@ -110,8 +105,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func acquire_item(item_name: String):
-	if item_name in inventory:
-		inventory[item_name] = true
+	if item_name in Game.inventory:
+		Game.inventory[item_name] = true
 
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("Boss"):

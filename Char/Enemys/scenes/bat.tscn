@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://uioik1qbv00k"]
+[gd_scene load_steps=22 format=3 uid="uid://dpo7remdtdobe"]
 
 [ext_resource type="Texture2D" uid="uid://brgw16qc22afx" path="res://Char/Enemys/Sprites/bat/bat-sheet.png" id="1_c4cgn"]
 [ext_resource type="Texture2D" uid="uid://bnywogq6jypmb" path="res://Char/Enemys/Sprites/enemy-deadth.png" id="1_qvy1m"]
@@ -167,7 +167,7 @@ radius = 8.0
 height = 28.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_i6jg5"]
-radius = 161.003
+radius = 256.008
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e6js8"]
 radius = 15.0
@@ -191,7 +191,6 @@ position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_5v1ar")
 
 [node name="PlayerDetection" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 visible = false

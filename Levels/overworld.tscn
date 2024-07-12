@@ -1131,13 +1131,10 @@ position = Vector2(255, 357)
 [node name="Mobs" type="Node" parent="."]
 
 [node name="Frog" parent="Mobs" instance=ExtResource("10_elq7b")]
-position = Vector2(609, 342)
+position = Vector2(2752, 287)
 
 [node name="Frog2" parent="Mobs" instance=ExtResource("10_elq7b")]
-position = Vector2(678, 341)
-
-[node name="Frog3" parent="Mobs" instance=ExtResource("10_elq7b")]
-position = Vector2(644, 281)
+position = Vector2(716, 348)
 
 [node name="eagle" parent="Mobs" instance=ExtResource("11_hkb2i")]
 position = Vector2(1131, 176)

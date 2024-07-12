@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bppttnio0gv2h"]
+[gd_scene load_steps=61 format=3 uid="uid://bppttnio0gv2h"]
 
 [ext_resource type="Script" path="res://Char/TonyFox/tony_fox.gd" id="1_rosge"]
 [ext_resource type="Texture2D" uid="uid://bortc884nt6mk" path="res://assets/Player/sprites/player.png" id="2_lp6mc"]
@@ -549,6 +549,9 @@ animation = &"Idle"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_w16fa"]
 animation = &"Idle_s"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dkx8o"]
+animation = &"Jump"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_65fwd"]
 animation = &"Jump_s"
 
@@ -574,6 +577,8 @@ states/Idle/node = SubResource("AnimationNodeAnimation_f7xka")
 states/Idle/position = Vector2(490, 50)
 states/Idle_s/node = SubResource("AnimationNodeAnimation_w16fa")
 states/Idle_s/position = Vector2(387, 350)
+states/Jump/node = SubResource("AnimationNodeAnimation_dkx8o")
+states/Jump/position = Vector2(451, 153)
 states/Jump_s/node = SubResource("AnimationNodeAnimation_65fwd")
 states/Jump_s/position = Vector2(765, 80)
 states/Run/node = SubResource("AnimationNodeAnimation_ceywo")
