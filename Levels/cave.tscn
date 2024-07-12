@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://0dqp1daho8d7"]
+[gd_scene load_steps=28 format=3 uid="uid://0dqp1daho8d7"]
 
 [ext_resource type="Texture2D" uid="uid://bw4syiu3dlv37" path="res://Levels/Lvl2 Cave/tileset.png" id="1_v55lc"]
 [ext_resource type="Texture2D" uid="uid://m8aca4yiaqok" path="res://Levels/Lvl2 Cave/background.png" id="2_jbsfm"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Levels/Frogman.gd" id="18_0kasn"]
 [ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/HP.gd" id="19_lpatj"]
 [ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/CoinCount.gd" id="20_up78c"]
+[ext_resource type="PackedScene" uid="uid://ciix1v3prmho3" path="res://Collectables/Coin/coin.tscn" id="21_yn3g7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qid1f"]
 texture = ExtResource("1_v55lc")
@@ -1021,6 +1022,7 @@ scroll_offset = Vector2(282.345, -85.1868)
 motion_mirroring = Vector2(1150, 0)
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
 position = Vector2(576, 323)
 scale = Vector2(2.66667, 2.69167)
 texture = ExtResource("2_jbsfm")
@@ -1238,7 +1240,7 @@ position = Vector2(1682, 814)
 texture = ExtResource("8_sh24o")
 
 [node name="TonyFox" parent="." instance=ExtResource("9_ogda6")]
-position = Vector2(425, 344)
+position = Vector2(236, 354)
 
 [node name="Mobs" type="Node" parent="."]
 
@@ -1296,6 +1298,7 @@ position = Vector2(1457.75, 1024)
 shape = SubResource("RectangleShape2D_ib086")
 
 [node name="LV1Teleporter" type="Area2D" parent="."]
+visible = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LV1Teleporter"]
 position = Vector2(143, 341)
@@ -1322,7 +1325,7 @@ position = Vector2(2366, 288)
 shape = SubResource("CapsuleShape2D_k2i0h")
 
 [node name="Checkpoint" parent="." instance=ExtResource("15_n2h2y")]
-position = Vector2(882, 352)
+position = Vector2(278, 354)
 
 [node name="Checkpoint2" parent="." instance=ExtResource("15_n2h2y")]
 position = Vector2(1046, 815)
@@ -1434,6 +1437,78 @@ offset_bottom = 78.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Coins:"
 script = ExtResource("20_up78c")
+
+[node name="Coin" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(360, 314)
+
+[node name="Coin2" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(380, 313)
+
+[node name="Coin3" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(399, 313)
+
+[node name="Coin4" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(360, 297)
+
+[node name="Coin5" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(380, 296)
+
+[node name="Coin6" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(399, 296)
+
+[node name="Coin7" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(740, 357)
+
+[node name="Coin8" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(760, 356)
+
+[node name="Coin9" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(779, 356)
+
+[node name="Coin10" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(740, 340)
+
+[node name="Coin11" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(760, 339)
+
+[node name="Coin12" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(779, 339)
+
+[node name="Coin13" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2060, 804)
+
+[node name="Coin14" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2080, 803)
+
+[node name="Coin15" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2099, 803)
+
+[node name="Coin16" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2060, 787)
+
+[node name="Coin17" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2080, 786)
+
+[node name="Coin18" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2099, 786)
+
+[node name="Coin19" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2424, 310)
+
+[node name="Coin20" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2444, 309)
+
+[node name="Coin21" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2463, 309)
+
+[node name="Coin22" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2424, 293)
+
+[node name="Coin23" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2444, 292)
+
+[node name="Coin24" parent="." instance=ExtResource("21_yn3g7")]
+position = Vector2(2463, 292)
 
 [connection signal="body_entered" from="DeathArea" to="etc_menu/PauseMenu" method="_on_death_area_body_entered"]
 [connection signal="body_entered" from="LV1Teleporter" to="etc_menu/PauseMenu" method="_on_lv_1_teleporter_body_entered"]
