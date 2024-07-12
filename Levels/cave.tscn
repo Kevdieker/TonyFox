@@ -1287,7 +1287,7 @@ position = Vector2(1750, 731)
 [node name="Collectables" type="Node" parent="."]
 
 [node name="Gem" parent="Collectables" instance=ExtResource("11_ijs34")]
-position = Vector2(605, 333)
+position = Vector2(613, 339)
 
 [node name="DeathArea" type="Area2D" parent="."]
 
@@ -1393,6 +1393,25 @@ script = ExtResource("18_0kasn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Frogman/Area2D"]
 position = Vector2(0.25, 0)
 shape = SubResource("RectangleShape2D_i7fev")
+
+[node name="Label" type="Label" parent="Frogman"]
+offset_left = -41.0
+offset_top = -58.0
+offset_right = 90.0
+offset_bottom = -14.0
+theme_override_font_sizes/font_size = 10
+text = "My friends 
+told me ur cool, take this"
+
+[node name="Label2" type="Label" parent="Frogman"]
+visible = false
+offset_left = 164.0
+offset_top = -51.0
+offset_right = 295.0
+offset_bottom = -7.0
+theme_override_font_sizes/font_size = 10
+text = "Press A for attack 
+Press D for dash"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
