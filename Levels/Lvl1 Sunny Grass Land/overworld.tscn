@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://xgt2oukk6dcs"]
+[gd_scene load_steps=22 format=3 uid="uid://xgt2oukk6dcs"]
 
 [ext_resource type="Texture2D" uid="uid://bw4syiu3dlv37" path="res://Levels/Lvl2 Cave/tileset.png" id="1_30sdp"]
 [ext_resource type="PackedScene" uid="uid://bppttnio0gv2h" path="res://Char/TonyFox/tony_fox.tscn" id="2_55wgc"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://dwvt0bbcs3bvb" path="res://Levels/fireball-hit-4.png" id="13_um6oe"]
 [ext_resource type="Texture2D" uid="uid://2rystlju5c4p" path="res://Levels/fireball-hit-5.png" id="14_4vtwc"]
 [ext_resource type="Texture2D" uid="uid://drfmgkjeamuqf" path="res://Levels/fireball-hit-6.png" id="15_6w821"]
+[ext_resource type="Script" path="res://Levels/Lvl1 Sunny Grass Land/HP.gd" id="16_xac14"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l3cvm"]
 texture = ExtResource("1_30sdp")
@@ -1150,6 +1151,19 @@ frame_progress = 0.528363
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LVL2Teleporter"]
 position = Vector2(1133, 361)
 shape = SubResource("CapsuleShape2D_1ykt1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HP" type="Label" parent="CanvasLayer"]
+offset_left = 20.0
+offset_top = 29.0
+offset_right = 76.0
+offset_bottom = 52.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "HP"
+script = ExtResource("16_xac14")
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn" to="etc_menu/PauseMenu" method="_on_resumebtn_pressed"]
 [connection signal="pressed" from="etc_menu/PauseMenu/PanelContainer/VBoxContainer/Restartbtn" to="etc_menu/PauseMenu" method="_on_restartbtn_pressed"]

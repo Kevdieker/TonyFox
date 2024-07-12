@@ -27,6 +27,7 @@ func _on_resumebtn_pressed():
 func _on_restartbtn_pressed():
 	Resumebtn.show()
 	resume()
+	Game.playerHP = 5
 	get_tree().reload_current_scene()
 
 func _on_optionsbtn_pressed():

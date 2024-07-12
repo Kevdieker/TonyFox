@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/Hitbox.gd" id="10_et60y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_htko2"]
-radius = 7.0
+radius = 11.0
 height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rwvbv"]
@@ -589,9 +589,9 @@ transitions = ["sword_attack", "Idle_s", SubResource("AnimationNodeStateMachineT
 script = ExtResource("1_rosge")
 
 [node name="HurtBox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_htko2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -605,6 +605,7 @@ animation = &"Idle0"
 frame = 1
 
 [node name="SwordHitBox" type="Area2D" parent="AnimatedSprite2D"]
+visible = false
 position = Vector2(-1, 8)
 script = ExtResource("10_et60y")
 

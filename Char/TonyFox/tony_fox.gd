@@ -9,6 +9,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim = $AnimationPlayer
 @onready var jumpAud = $JumpAud
 @onready var sprite = $AnimatedSprite2D
+@onready var Resumebtn =$"../etc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn"
+@onready var pauseMenu =$"../etc_menu/PauseMenu"
+
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
@@ -18,7 +21,6 @@ var left = false
 var inventory = {
 	"sword": true,
 	"boots": true,
-	"cloak": false
 }
 
 func jump():
@@ -38,7 +40,16 @@ func dash():
 	else:
 		velocity.x -= DASH_VELOCITY
 
+func death():
+	Resumebtn.hide()
+	pauseMenu.show()
+	pauseMenu.pause()
+
 func _physics_process(delta):
+	
+	if Game.playerHP == 0:
+		death()
+	
 	set_collision_mask_value(9, true)	
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -101,8 +112,11 @@ func acquire_item(item_name: String):
 		inventory[item_name] = true
 
 func _on_hurt_box_area_entered(area):
-	if area.is_in_group("enemy"):
-		print("OUCH")
+	if area.is_in_group("123"): #funktioniert mit enemy weeknessbox??
+		print("Kevin")
+		Game.playerHP -= 1
+		print(Game.playerHP)
+		
 
 func _on_sword_hit_box_area_entered(area):
 	if area.is_in_group("hurtbox"):

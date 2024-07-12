@@ -1,9 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://dq3hg5uyvmqve"]
+[gd_scene load_steps=23 format=3 uid="uid://b828wpe82n8ie"]
 
-[ext_resource type="Texture2D" uid="uid://bnywogq6jypmb" path="res://Char/Enemys/Sprites/enemy-deadth.png" id="1_1yv1s"]
-[ext_resource type="Texture2D" uid="uid://cwm0514ri3hb1" path="res://Char/Enemys/Sprites/frog/frog-idle.png" id="2_8dssl"]
-[ext_resource type="Texture2D" uid="uid://btw1mo2t65qn5" path="res://Char/Enemys/Sprites/frog/frog-jump.png" id="3_7w1g4"]
-[ext_resource type="Script" path="res://scripts/HurtBox.gd" id="4_c4m80"]
+[ext_resource type="Texture2D" uid="uid://bnywogq6jypmb" path="res://Char/Enemys/Sprites/enemy-deadth.png" id="1_2l1be"]
+[ext_resource type="Texture2D" uid="uid://btw1mo2t65qn5" path="res://Char/Enemys/Sprites/frog/frog-jump.png" id="2_xbqhc"]
+[ext_resource type="Texture2D" uid="uid://cwm0514ri3hb1" path="res://Char/Enemys/Sprites/frog/frog-idle.png" id="3_4h8md"]
+[ext_resource type="Script" path="res://scripts/HurtBox.gd" id="4_bul6d"]
 
 [sub_resource type="GDScript" id="GDScript_5n3rv"]
 script/source = "extends CharacterBody2D
@@ -74,51 +74,51 @@ func death():
 "
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j8srh"]
-atlas = ExtResource("1_1yv1s")
+atlas = ExtResource("1_2l1be")
 region = Rect2(0, 0, 40, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lpbwh"]
-atlas = ExtResource("1_1yv1s")
+atlas = ExtResource("1_2l1be")
 region = Rect2(40, 0, 40, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2o8pv"]
-atlas = ExtResource("1_1yv1s")
+atlas = ExtResource("1_2l1be")
 region = Rect2(80, 0, 40, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6m5oc"]
-atlas = ExtResource("1_1yv1s")
+atlas = ExtResource("1_2l1be")
 region = Rect2(120, 0, 40, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v753c"]
-atlas = ExtResource("1_1yv1s")
+atlas = ExtResource("1_2l1be")
 region = Rect2(160, 0, 40, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wo0dg"]
-atlas = ExtResource("1_1yv1s")
+atlas = ExtResource("1_2l1be")
 region = Rect2(200, 0, 40, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ok7m4"]
-atlas = ExtResource("3_7w1g4")
+atlas = ExtResource("2_xbqhc")
 region = Rect2(70, 0, 35, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g3ynk"]
-atlas = ExtResource("2_8dssl")
+atlas = ExtResource("3_4h8md")
 region = Rect2(0, 0, 35, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v0lj6"]
-atlas = ExtResource("2_8dssl")
+atlas = ExtResource("3_4h8md")
 region = Rect2(35, 0, 35, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c5tmy"]
-atlas = ExtResource("2_8dssl")
+atlas = ExtResource("3_4h8md")
 region = Rect2(70, 0, 35, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_di2l2"]
-atlas = ExtResource("2_8dssl")
+atlas = ExtResource("3_4h8md")
 region = Rect2(105, 0, 35, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_svul3"]
-atlas = ExtResource("3_7w1g4")
+atlas = ExtResource("2_xbqhc")
 region = Rect2(35, 0, 35, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_senck"]
@@ -194,7 +194,7 @@ height = 26.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_185ap"]
 radius = 12.0
 
-[node name="Frog" type="CharacterBody2D"]
+[node name="FrogBoss" type="CharacterBody2D"]
 script = SubResource("GDScript_5n3rv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -218,7 +218,7 @@ position = Vector2(0, -4)
 shape = SubResource("CapsuleShape2D_73gbr")
 
 [node name="HurtBox" type="Area2D" parent="." groups=["123", "enemy", "hurtbox"]]
-script = ExtResource("4_c4m80")
+script = ExtResource("4_bul6d")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" groups=["123"]]
 position = Vector2(0, 1)
