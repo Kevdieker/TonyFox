@@ -11,7 +11,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var sprite = $AnimatedSprite2D
 @onready var Resumebtn =$"../etc_menu/PauseMenu/PanelContainer/VBoxContainer/Resumebtn"
 @onready var pauseMenu =$"../etc_menu/PauseMenu"
-
+@onready var Checkpointbtn = $"../etc_menu/PauseMenu/PanelContainer/VBoxContainer/Checkpoint"
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
@@ -43,6 +43,7 @@ func dash():
 
 func death():
 	Resumebtn.hide()
+	Checkpointbtn.hide()
 	pauseMenu.show()
 	pauseMenu.pause()
 

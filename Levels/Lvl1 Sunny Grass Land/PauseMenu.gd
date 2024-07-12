@@ -43,7 +43,6 @@ func _on_back_to_menubtn_pressed():
 func _on_death_area_body_entered(body):
 	if body.name == "TonyFox":
 		Resumebtn.hide()
-		Checkpointbtn.hide()
 		pauseMenu.show()
 		pause()
 
